@@ -2,6 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./nav.css";
 
+import { connect } from 'react-redux';
+
+const mapDispatchToProps = dispatch => {
+  return {
+    // dispatching plain actions
+    logOut: () => dispatch({ type: 'LOGOUT' }),
+  }
+}
+
 const Nav = (props) => {
     return (
         <div className="nav-strip">
@@ -15,7 +24,7 @@ const Nav = (props) => {
                     <label className="nav-label">View Orders</label>
                 </div>
             </Link>
-            <Link to={"/login"} className="nav-link">
+            <Link to={"/login"} className="nav-link" onClick={props.logOut}>
                 <div className="nav-link-style">
                     <label className="nav-label">Log Out</label>
                 </div>
@@ -24,4 +33,4 @@ const Nav = (props) => {
     );
 }
 
-export default Nav;
+export default connect(null, mapDispatchToProps)(Nav);
