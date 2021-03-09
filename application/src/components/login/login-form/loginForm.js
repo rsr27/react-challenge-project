@@ -8,6 +8,10 @@ const mapActionsToProps = dispatch => ({
   }
 })
 
+// TODO: Make it so logging in waits for the redux to get the values before finish onLogin(). This prevents
+// the double log in bug which is occuring because the redux doesn't get the values fast enough before the
+// relocation happens.
+
 class LoginForm extends Component {
   state = {
     email: "",
